@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AnimeVerse - jQuery</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial;
+            background: lightblue;
+        }
+
+        h1 { color: darkblue; }
+
+        .box {
+            background: white;
+            width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        input, select, button {
+            padding: 8px;
+            margin: 5px;
+        }
+
+        button {
+            background: darkblue;
+            color: white;
+            border: none;
+        }
+
+        img {
+            width: 120px;
+            height: 150px;
+            margin: 5px;
+        }
+
+        #character {
+            width: 100px;
+            height: 150px;
+            margin: 15px auto;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>AnimeVerse</h1>
+
+<!-- 1. Anime Budget Calculator -->
+<div class="box">
+    <h2>Anime Budget Calculator</h2>
+
+    Amount:
+    <input type="number" id="amount" value="10000"><br>
+
+    <button id="calculate">Calculate</button>
+
+    <p id="budget"></p>
+</div>
+
+<!-- 2. Anime Merchandise -->
+<div class="box">
+    <h2>Anime Merchandise</h2>
+
+    <img src="images/naruto.png">
+    <img src="images/onepiece.png">
+    <img src="images/demonslayer.png">
+
+    <p>Naruto ₹300 | One Piece ₹250 | Demon Slayer ₹200</p>
+
+    Naruto Quantity:
+    <input type="number" id="n" value="1"><br>
+
+    One Piece Quantity:
+    <input type="number" id="o" value="1"><br>
+
+    Demon Slayer Quantity:
+    <input type="number" id="d" value="1"><br>
+
+    <button id="order">Place Order</button>
+
+    <h3 id="total"></h3>
+</div>
+
+<!-- 3. Anime Character Workshop -->
+<div class="box">
+    <h2>Anime Character Workshop</h2>
+
+    <div id="character">
+        <img id="anime" src="images/naruto.png">
+    </div>
+
+    <button id="change">Change Character</button>
+    <button id="size">Change Size</button>
+    <button id="hide">Hide Character</button>
+</div>
+
+<script>
+
+$(document).ready(function() {
+
+    // 1. Budget Calculation
+    $("#calculate").click(function() {
+        let amount = $("#amount").val();
+        $("#budget").html(
+            "Food: ₹" + amount * 0.40 +
+            " | Travel: ₹" + amount * 0.30 +
+            " | Savings: ₹" + amount * 0.30
+        );
+    });
+
+    // 2. Merchandise Order
+    $("#order").click(function() {
+        let total = $("#n").val() * 300 +
+                    $("#o").val() * 250 +
+                    $("#d").val() * 200;
+
+        $("#total").html("Total Price: ₹" + total);
+    });
+
+    // 3. Character Workshop
+    $("#change").click(function() {
+        $("#anime").attr("src", "images/onepiece.png");
+    });
+
+    $("#size").click(function() {
+        $("#anime").animate({
+            width: "180px",
+            height: "220px"
+        });
+    });
+
+    $("#hide").click(function() {
+        $("#anime").hide();
+    });
+
+});
+
+</script>
+
+</body>
+</html>
